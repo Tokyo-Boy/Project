@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Waste Awareness</title>
+  <style>
+    /* Global Styles */
+    :root {
+      --primary-color: #2e7d32;
+      --accent-color: #81c784;
+      --bg-color: #f4f6f4;
+      --text-color: #333333;
+      --card-bg: #ffffff;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Top Resources Link Section */
+    .resources-nav {
+      background-color: #e8f5e9;
+      padding: 0.75rem 2rem;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    .resources-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .resources-nav a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .resources-nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .content-card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1.5rem;
+    }
+
+    h1, h2 {
+      color: var(--primary-color);
+    }
+
+    /* Interactive Button Styling */
+    .interactive-btn {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .interactive-btn:hover {
+      background-color: #1b5e20;
+    }
+
+    #js-output {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: #e8f5e9;
+      border-left: 4px solid var(--primary-color);
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="resources-nav" aria-label="Resources Links">
+    <ul>
+      <li><strong>Resources:</strong></li>
+      <li>
+        <a href="https://www.epa.gov/recycle/preventing-wasted-food-home" target="_blank" rel="noopener">
+          EPA: Preventing Wasted Food At Home
+        </a>
+      </li>
+      <li>
+        <a href="https://www.studentlunchbox.org/post/fighting-food-insecurity-and-hunger-sustainable-solutions" target="_blank" rel="noopener">
+          Student LunchBox: Sustainable Solutions
+        </a>
+      </li>
+      <li>
+        <a href="https://www.clarkcountynv.gov/residents/assistance_programs/food-assistance" target="_blank" rel="noopener">
+          Clark County: Food Assistance Programs
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Food Waste Initiative</h1>
+  </header>
+
+  <main>
+    <section class="content-card">
+      <h2>Overview</h2>
+      <p id="paragraph-1"></p>
+    </section>
+
+    <section class="content-card">
+      <h2>Impact & Solutions</h2>
+      <p id="paragraph-2"></p>
+      
+      <button class="interactive-btn" onclick="toggleInformation()">Learn More</button>
+      
+      <div id="js-output">
+        <p id="paragraph-js"></p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Blank variables ready for custom text/data input
+    const paragraph1Text = "";
+    const paragraph2Text = "";
+    const dynamicJsText = "";
+
+    // Insert initial blank values into the HTML DOM elements
+    document.getElementById('paragraph-1').textContent = paragraph1Text;
+    document.getElementById('paragraph-2').textContent = paragraph2Text;
+    document.getElementById('paragraph-js').textContent = dynamicJsText;
+
+    // Interactive JavaScript function
+    function toggleInformation() {
+      const outputDiv = document.getElementById('js-output');
+      if (outputDiv.style.display === "none" || outputDiv.style.display === "") {
+        outputDiv.style.display = "block";
+      } else {
+        outputDiv.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
