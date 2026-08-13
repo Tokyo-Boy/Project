@@ -73,7 +73,7 @@
       margin-bottom: 1.5rem;
     }
 
-    h1, h2 {
+    h1, h2, h3 {
       color: var(--primary-color);
     }
 
@@ -99,6 +99,52 @@
       background-color: #e8f5e9;
       border-left: 4px solid var(--primary-color);
       display: none;
+    }
+
+    /* Comment Section Styles */
+    .comment-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .comment-form input, 
+    .comment-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: inherit;
+      box-sizing: border-box;
+    }
+
+    .comment-form textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .comments-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .comment-item {
+      background-color: #f9f9f9;
+      border-left: 4px solid var(--accent-color);
+      padding: 0.75rem 1rem;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .comment-author {
+      font-weight: bold;
+      color: var(--primary-color);
+      margin-bottom: 0.25rem;
+    }
+
+    .comment-text {
+      margin: 0;
     }
   </style>
 </head>
@@ -145,20 +191,37 @@
         <p id="paragraph-js"></p>
       </div>
     </section>
+
+    <!-- Comments Section -->
+    <section class="content-card">
+      <h2>Leave a Comment</h2>
+      <form class="comment-form" id="commentForm" onsubmit="addComment(event)">
+        <input type="text" id="commenterName" placeholder="Your Name" required>
+        <textarea id="commentText" placeholder="Share your thoughts about food waste..." required></textarea>
+        <button type="submit" class="interactive-btn">Submit Comment</button>
+      </form>
+
+      <h3>Comments</h3>
+      <div class="comments-list" id="commentsContainer">
+        <!-- New comments will appear here -->
+      </div>
+    </section>
   </main>
 
   <script>
-    // Blank variables ready for custom text/data input
-    const paragraph1Text = "";
-    const paragraph2Text = "";
-    const dynamicJsText = "";
+    // Variables populated with your text
+    const paragraph1Text = "Food waste is most common around the world. We could use those foods to feed hungry people such as students, homeless and other people who needs food. It is the key that can help improve cities if we can avoid food wastes. If we fight food waste and help provide food that doesn’t get used to give everything we have to people who needs it then we can help solve food waste.";
+    
+    const paragraph2Text = "Some students in colleges don’t have money to buy food because, rent, car payments, gas prices etc.… has gone up in price. Most students need resources from food banks which we could help fight the hunger issues for students. It is task that we can accomplish if we all help provide meals for students who are traying to get an education.";
+    
+    const dynamicJsText = "If we help provide resources to food banks, we can help feed people which will help make someone happy. It should be our goal and should be solved so we can improve our communities. There are many ways we can help solve this problem and make a change by not wasting food and create plans with the resources we have. It can help us fight food waste.";
 
-    // Insert initial blank values into the HTML DOM elements
+    // Insert text values into the HTML DOM elements
     document.getElementById('paragraph-1').textContent = paragraph1Text;
     document.getElementById('paragraph-2').textContent = paragraph2Text;
     document.getElementById('paragraph-js').textContent = dynamicJsText;
 
-    // Interactive JavaScript function
+    // Interactive JavaScript function to toggle "Learn More"
     function toggleInformation() {
       const outputDiv = document.getElementById('js-output');
       if (outputDiv.style.display === "none" || outputDiv.style.display === "") {
@@ -166,6 +229,37 @@
       } else {
         outputDiv.style.display = "none";
       }
+    }
+
+    // Function to dynamically add user comments
+    function addComment(event) {
+      event.preventDefault();
+      
+      const nameInput = document.getElementById('commenterName');
+      const textInput = document.getElementById('commentText');
+      const commentsContainer = document.getElementById('commentsContainer');
+
+      // Create new comment element
+      const newComment = document.createElement('div');
+      newComment.className = 'comment-item';
+
+      const author = document.createElement('div');
+      author.className = 'comment-author';
+      author.textContent = nameInput.value;
+
+      const body = document.createElement('p');
+      body.className = 'comment-text';
+      body.textContent = textInput.value;
+
+      newComment.appendChild(author);
+      newComment.appendChild(body);
+
+      // Append comment to the list
+      commentsContainer.appendChild(newComment);
+
+      // Clear input fields
+      nameInput.value = '';
+      textInput.value = '';
     }
   </script>
 
